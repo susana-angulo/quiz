@@ -28,14 +28,21 @@
   </nav>
 
   <section class="main" id="s1">
+    <% if (errors.length) { %>
+      <span id='ErrorMsgs'>
+        Corregir errores:<br/>
+        <% for (var i in errors) { %>
+           <span> <%= errors[i].message %> </span><br/>
+        <% } %>
+      </span>
+    <% } %>
     <div><%- body %></div>
   </section>
 
   <footer class="main" id="f1">
-    <a href="http://es.wikipedia.org/wiki/Quiz">
-      ¿Que es un Quiz?</a>
-	   <span><a href="https://github.com/susana-angulo/quiz"><img src="/images/GitHub.png" weidth= "25" height="25" alt="GitHub" border="2"></a></span>
+    <span><a href="http://es.wikipedia.org/wiki/Quiz">¿Que es un Quiz?</a></span>
+    <span><a href="https://github.com/JuanmaCarrasco/quiz"><img src="/images/GitHub.png" weidth= "25" height="25" alt="GitHub" border="2"></a></span>
   </footer>
 </div>
-</body> 
+</body>
 </html>
