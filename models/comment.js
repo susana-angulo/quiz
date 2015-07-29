@@ -1,0 +1,11 @@
+// Definicion del modelo de comentarios asociados a las preguntas
+module.exports = function(sequelize, DataTypes) {
+  return sequelize.define(
+  	'Comment',
+    { texto: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario"}}
+      }
+    }
+  );
+}
