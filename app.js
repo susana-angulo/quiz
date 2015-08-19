@@ -31,6 +31,27 @@ secret: 'Quiz2015',
 resave: false,
 saveUninitialized: true
 }));
+
+// session auto-logout
+app.use(function (req, res, next) {
+    var session = req.session;
+    // 2 minutos
+    var maxTimeSleep = 120000;
+    var currentTime = new Date().getTime();
+    var currentInactivityTime = currentTime - session.lastTime;
+
+    if(req.session.user){
+        if(currentInactivityTime > maxTimeSleep){
+            delete req.session.user;
+            res.redirect('/login');
+        }
+    }else{
+        session.lastTime = currentTime;
+    }
+
+    next();
+});
+
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
